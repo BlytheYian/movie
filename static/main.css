@@ -28,6 +28,10 @@ nav {
     font-weight: bold;
     cursor: pointer;
 }
+.staff {
+    position: absolute;
+    right: 3vh;
+}
 
 /*main*/
 main {
