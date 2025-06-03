@@ -66,7 +66,7 @@ def get_movie_by_code(code):
 def get_critics_by_code(code):
     conn = pool.get_connection()
     cursor = conn.cursor(dictionary=True)
-    query = "select member.member_name,rate.rate_stars from rate join member on member.member_id=rate.member_id where movie_id=%s"
+    query = "select member.member_name,rate.rate_stars,rate.rate_critics from rate join member on member.member_id=rate.member_id where movie_id=%s"
     cursor.execute(query, (code,))
     result = cursor.fetchall()
 
@@ -83,9 +83,10 @@ def movie_detail(movie_id):
     else:
         return "這個電影的資訊迷失在宇宙盡頭……", 404
     
-@app.route('/title/staff/')
+@app.route('/staff')
 def staff_page():
     keyword = request.args.get('find_data')  # 取得搜尋字串
+    return render_template('staff.html')
 
 if __name__ == '__main__':
     try:

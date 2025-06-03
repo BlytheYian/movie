@@ -238,6 +238,10 @@ main {
     background: #808b91;
     border-radius: 1vh;
 }
+.else {
+    left:3vh;
+    position: relative;
+}
 .critics_user {
     padding: 3.5vh;
     display: flex;
