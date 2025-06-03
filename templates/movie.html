@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.movie_title }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/movie.css">
+</head>
+<body>
+    <nav>
+        <a href="/">SEM Video</a>
+    </nav>
+    <main>
+        <div class="movie">
+            <img src="{{ url_for('static', filename=movie.movie_picture) }}" alt="替代文字" class="poster">
+            <div class="movie_sum">
+                <h1>{{ movie.movie_title }}</h1>
+                <p class="movie_det">上架日期  {{ movie.movie_release }} ‧ 分級  {{ movie.movie_grade }} ‧ 時長  {{ movie.movie_length }} min.</p>
+                <div class="scroll_box">
+                    <p class="summary">{{ movie.movie_describe }}</p>
+                </div>
+                <div class="button_horizon">
+                    <button class="add_list">加入待看清單</button>
+                    <button class="buy">${{ movie.movie_charge }}</button>
+                </div>
+            </div>
+        </div>
+        <div class="casts">
+            <div class="casts_display">
+                <p class="casts_title">Director    ．</p>
+                <p class="">{{ movie.directors }}</p>
+            </div>
+            <div class="casts_display">
+                <p class="casts_title">Stars       ．</p>
+                <p>{{ movie.actors }}</p>
+            </div>
+        </div>
+        <div class="screenshots">
+            <h2>Screenshots</h2>
+            <div class="screenshots_img">
+                <img src="C:\Users\blyth\Pictures\一些東西\cyn-is-controlling-the-company-in-present-day-and-v0-d3p6h53lre5b1.webp">
+                <img src="C:\Users\blyth\Pictures\一些東西\desktop-wallpaper-murder-drones.jpg">
+            </div>
+        </div>
+        <div class="critics">
+            <h2>Critics Review</h2>
+            <div class="critics_review">
+                <div class="critics_user">
+                    <img src="{{ url_for('static', filename='62589936_0.jpg') }}">
+                    <p class="critics_user_name">user01231</p>
+                    <p class="critics_user_star">5 </p>
+                    <p class="critics_user_review">讚喔0.0b 以下測試51646542646464 264646546 456465464 64646464564 513215 465453121 45875234 68541 214674814 50878 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125 985120125</p>
+                </div>
+            </div>
+        </div>
+    </main>
+ <!--table:表格,tr:橫行,th同行不同格子-->
+</body>
+</html>

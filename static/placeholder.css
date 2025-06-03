@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 00px;
+    font-family: sans-serif;
+    background-color: #D9D9D9;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #444;
+    color: white;
+    padding: 15px 20px;
+    z-index: 1000;
+}
+main {
+    margin-top: 30px; /* 為了避免內容被 header 蓋住 */
+    padding: 0px;
+    width: 100%;
+    height: 2000px;
+    background-color: #D9D9D9;
+}
+.movie {
+    margin: 0px;
+    padding: 50px;
+    width: 100%;
+    height: 650px;
+    display: flex;
+    flex-direction: row; /* row 或 column */
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 0;
+    background-color: white;
+}.poster {
+    width: 273px;
+    height: 382px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px gray;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.movie_sum {
+    margin: 30px;
+    display: flex;
+    flex-direction: column; /* row 或 column */
+    justify-content: flex-start;
+    align-items: flex-start;
+}.movie_sum h1 {
+    width: 100%;
+    position: relative;
+    padding-bottom: 10px; /* 給點空間 */
+    margin-bottom: -5px;  /* 與下面區塊分開 */
+}.movie_sum h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100%);            /* 線長 */
+    height: 3px;            /* 線粗 */
+    background-color: #333; /* 線色 */
+    border-radius: 2px;
+}
+.movie_det{
+    font-size: 0.8rem;
+    color: gray;
+    margin-bottom: -3px;
+}
+.scroll_box{
+    width: 100%;       /* 固定寬度 */
+    height: 150px;      /* 固定高度 */
+    border: 1px solid #ccc;
+    padding: 3px;
+    overflow-y: auto;   /* 超出時顯示垂直滾動條 */
+    background-color: transparent;
+    margin-bottom: 15px;  /* 與下面區塊分開 */
+    border: none;
+}.scroll_box::-webkit-scrollbar {
+    display: none; /* Chrome, Safari 和 Opera */
+}
+.button_horizon{
+    width: 100%;
+    display: flex;
+    flex-direction: row; /* row 或 column */
+    gap: 2%;
+}
+.add_list{
+    border-radius: 10px;
+    border: 3px solid #91A0A8;
+    color: #91A0A8;
+    width: 39%;
+    height: 40px;   
+    background-color: #FFFFFF;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;  /* 讓滑鼠變成「手指指標」 */
+}.add_list:hover {
+    border: 3px solid #adbbc4;
+    color: #adbbc4;
+    background-color: #def1fc;
+}
+.buy{
+    border-radius: 10px;
+    color: #FFFFFF;
+    border: 10px;
+    width: 59%;
+    height: 40px; 
+    background-color: #A8B6BD;
+    font-size: 1.1rem;
+    cursor: pointer;
+}.buy:hover {
+    background-color: #baccd5;
+}

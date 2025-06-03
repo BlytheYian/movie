@@ -1,0 +1,1728 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\nuse `411277031`\nSELECT DISTINCT * from movie as m\nselect * from person\ninsert into person values(312459,'高師大學生312459號','2000/01/01');\nselect * from role\ninsert into role values(352701,'312459','actor');\nSELECT DISTINCT m.movie_id, m.movie_title\nFROM person p\nJOIN role r ON p.person_id = r.person_id\nJOIN movie m ON r.movie_id = m.movie_id\nWHERE p.person_name = '高師大學生312457號'\nAND r.role_type IN ('director');\nSELECT distinct movie.movie_id,movie.movie_title FROM movie \ninner join role on role.movie_id=movie.movie_id \ninner join person on role.person_id=person.person_id \nWHERE person.person_name LIKE '%1%' AND role.role_type IN ('actor');\nSELECT \n    m.*,\n    GROUP_CONCAT(DISTINCT CASE WHEN r1.role_type = 'director' THEN p1.person_name END SEPARATOR ', ') AS directors,\n    GROUP_CONCAT(DISTINCT CASE WHEN r1.role_type = 'actor' THEN p1.person_name END SEPARATOR ', ') AS actors\nFROM movie m\nleft JOIN role r1 ON r1.movie_id = m.movie_id\nleft JOIN person p1 ON r1.person_id = p1.person_id\nwhere m.movie_id=3\nGROUP BY m.movie_id, m.movie_title;\nselect * from rate\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 24,
+                    "column": 8
+                },
+                "position": {
+                    "lineNumber": 24,
+                    "column": 8
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 18,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 61
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 2,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "9e994c6f-fe06-4271-c77b-55f25b68ae0b",
+                            "content": "OK, 0 records retrieved in 91.979ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 15
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 3,
+                "end": 3,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "960bab5b-591c-45f9-9d9d-876efcea42c9"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 33
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "deb5c29f-f61e-459f-9d23-8f45b24ab910",
+                    "resultId": "960bab5b-591c-45f9-9d9d-876efcea42c9",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Shadows of Tomorrow",
+                            "2": "2005-03-14",
+                            "3": "2.99",
+                            "4": 7.8,
+                            "5": "Marvel Studios",
+                            "6": 120,
+                            "7": "Sci-Fi",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A futuristic tale of survival."
+                        },
+                        {
+                            "0": 2,
+                            "1": "Love in Kyoto",
+                            "2": "2006-07-21",
+                            "3": "3.49",
+                            "4": 6.5,
+                            "5": "Warner Bros.",
+                            "6": 102,
+                            "7": "Romance",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A romantic journey in ancient Japan."
+                        },
+                        {
+                            "0": 3,
+                            "1": "The Forgotten Warrior",
+                            "2": "2007-11-30",
+                            "3": "4.50",
+                            "4": 8.2,
+                            "5": "BBC Studios",
+                            "6": 134,
+                            "7": "Action",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A soldier returns with a secret."
+                        },
+                        {
+                            "0": 4,
+                            "1": "Haunting Memories",
+                            "2": "2008-06-03",
+                            "3": "2.99",
+                            "4": 7.3,
+                            "5": "Blumhouse",
+                            "6": 98,
+                            "7": "Horror",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Ghosts from the past never rest."
+                        },
+                        {
+                            "0": 5,
+                            "1": "Circuit Overload",
+                            "2": "2008-10-15",
+                            "3": "3.99",
+                            "4": 6.9,
+                            "5": "Marvel Studios",
+                            "6": 108,
+                            "7": "Sci-Fi",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "AI runs wild in a connected world."
+                        },
+                        {
+                            "0": 6,
+                            "1": "Hearts on Fire",
+                            "2": "2010-02-13",
+                            "3": "2.85",
+                            "4": 7.1,
+                            "5": "Netflix Studios",
+                            "6": 110,
+                            "7": "Drama",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Love and rebellion in the 80s."
+                        },
+                        {
+                            "0": 7,
+                            "1": "Shadows Return",
+                            "2": "2011-05-18",
+                            "3": "3.89",
+                            "4": 8,
+                            "5": "Marvel Studios",
+                            "6": 127,
+                            "7": "Sci-Fi",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "The fight continues across time."
+                        },
+                        {
+                            "0": 8,
+                            "1": "Echoes in the Dark",
+                            "2": "2012-09-09",
+                            "3": "2.50",
+                            "4": 6.8,
+                            "5": "BBC Studios",
+                            "6": 99,
+                            "7": "Horror",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A house with a voice of its own."
+                        },
+                        {
+                            "0": 9,
+                            "1": "Quantum Secrets",
+                            "2": "2013-12-20",
+                            "3": "3.99",
+                            "4": 7.6,
+                            "5": "Warner Bros.",
+                            "6": 119,
+                            "7": "Thriller",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Scientists discover forbidden knowledge."
+                        },
+                        {
+                            "0": 10,
+                            "1": "The Last Melody",
+                            "2": "2014-08-12",
+                            "3": "2.85",
+                            "4": 7,
+                            "5": "Netflix Studios",
+                            "6": 95,
+                            "7": "Musical",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A blind pianists last performance."
+                        },
+                        {
+                            "0": 11,
+                            "1": "Underneath",
+                            "2": "2015-01-22",
+                            "3": "2.99",
+                            "4": 7.5,
+                            "5": "Blumhouse",
+                            "6": 103,
+                            "7": "Horror",
+                            "8": "18+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "What lies beneath the city ruins?"
+                        },
+                        {
+                            "0": 12,
+                            "1": "Dreamscape",
+                            "2": "2015-11-01",
+                            "3": "3.80",
+                            "4": 6.9,
+                            "5": "Marvel Studios",
+                            "6": 130,
+                            "7": "Sci-Fi",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A dream-shifting agent loses control."
+                        },
+                        {
+                            "0": 13,
+                            "1": "The Painters Truth",
+                            "2": "2016-04-09",
+                            "3": "3.89",
+                            "4": 8.9,
+                            "5": "BBC Studios",
+                            "6": 109,
+                            "7": "Drama",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A mystery through color and memory."
+                        },
+                        {
+                            "0": 14,
+                            "1": "Digital Mirage",
+                            "2": "2017-06-14",
+                            "3": "4.00",
+                            "4": 4.7,
+                            "5": "Netflix Studios",
+                            "6": 89,
+                            "7": "Sci-Fi",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "An illusion within the metaverse."
+                        },
+                        {
+                            "0": 15,
+                            "1": "The Howling",
+                            "2": "2018-10-31",
+                            "3": "2.50",
+                            "4": 7.2,
+                            "5": "Blumhouse",
+                            "6": 128,
+                            "7": "Horror",
+                            "8": "18+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Full moon awakens an old curse."
+                        },
+                        {
+                            "0": 16,
+                            "1": "Burning Lies",
+                            "2": "2019-03-02",
+                            "3": "4.60",
+                            "4": 8.5,
+                            "5": "Warner Bros.",
+                            "6": 94,
+                            "7": "Action",
+                            "8": "18+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A fireman turned vigilante."
+                        },
+                        {
+                            "0": 17,
+                            "1": "Cosmic Drift",
+                            "2": "2020-05-25",
+                            "3": "2.99",
+                            "4": 4.5,
+                            "5": "Marvel Studios",
+                            "6": 109,
+                            "7": "Thriller",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Worlds collide through black holes."
+                        },
+                        {
+                            "0": 18,
+                            "1": "Afterglow",
+                            "2": "2020-12-07",
+                            "3": "4.50",
+                            "4": 3.2,
+                            "5": "BBC Studios",
+                            "6": 90,
+                            "7": "Horror",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A girl links with the dead."
+                        },
+                        {
+                            "0": 19,
+                            "1": "Echo Park Murders",
+                            "2": "2021-01-16",
+                            "3": "3.25",
+                            "4": 7.9,
+                            "5": "Netflix Studios",
+                            "6": 112,
+                            "7": "Sci-Fi",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Detectives uncover deeper secrets."
+                        },
+                        {
+                            "0": 20,
+                            "1": "Soul Bound",
+                            "2": "2021-09-27",
+                            "3": "2.79",
+                            "4": 8.8,
+                            "5": "Blumhouse",
+                            "6": 125,
+                            "7": "Romance",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A love story after a tragedy."
+                        },
+                        {
+                            "0": 21,
+                            "1": "The Last Orbit",
+                            "2": "2022-03-12",
+                            "3": "3.99",
+                            "4": 5.6,
+                            "5": "Marvel Studios",
+                            "6": 133,
+                            "7": "Horror",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "AI and human fall in love."
+                        },
+                        {
+                            "0": 22,
+                            "1": "Whisper",
+                            "2": "2022-10-20",
+                            "3": "3.25",
+                            "4": 7.2,
+                            "5": "BBC Studios",
+                            "6": 137,
+                            "7": "Thriller",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A girl meets herself from another world."
+                        },
+                        {
+                            "0": 23,
+                            "1": "Crimson Dawn",
+                            "2": "2023-02-05",
+                            "3": "2.25",
+                            "4": 6.4,
+                            "5": "Warner Bros.",
+                            "6": 93,
+                            "7": "Action",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "An empire rising from blood."
+                        },
+                        {
+                            "0": 24,
+                            "1": "Parallel",
+                            "2": "2023-07-18",
+                            "3": "3.99",
+                            "4": 5.9,
+                            "5": "Netflix Studios",
+                            "6": 101,
+                            "7": "Sci-Fi",
+                            "8": "18+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Humanity’s last mission in space."
+                        },
+                        {
+                            "0": 25,
+                            "1": "The Harvest",
+                            "2": "2024-04-01",
+                            "3": "2.25",
+                            "4": 8,
+                            "5": "Blumhouse",
+                            "6": 110,
+                            "7": "Thriller",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Worlds collide through black holes."
+                        },
+                        {
+                            "0": 352701,
+                            "1": "Ctrl不了的未來-系到瘋掉",
+                            "2": "2025-05-25",
+                            "3": "0.00",
+                            "4": 9.3,
+                            "5": "高師大",
+                            "6": 10,
+                            "7": "喜劇",
+                            "8": "18+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "隨著期末鄰近，一場風暴將使軟體系天翻地覆，但卻還沒有人察覺這一切...整個系會因為那個apple原廠鍵盤而四分五裂，還是一同面對他們共同的敵人：校長的邪惡克隆？摧毀所有人資料庫期末作業的那個人又是誰？"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "movie_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_title",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_release",
+                            "field": "2",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_charge",
+                            "field": "3",
+                            "dataType": {
+                                "type": 10,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 65,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FIXED",
+                                    "NUMERIC",
+                                    "DEC"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_rate",
+                            "field": "4",
+                            "dataType": {
+                                "type": 7,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 53,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FLOAT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "company_name",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_length",
+                            "field": "6",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_genre",
+                            "field": "7",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_grade",
+                            "field": "8",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_picture",
+                            "field": "9",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_describe",
+                            "field": "10",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 26 records retrieved in 80.745ms"
+                    },
+                    "totalRowCount": 26,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT DISTINCT * from movie as m",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 4,
+                "end": 4,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "994e9992-f083-4e8f-e250-b13731f75b27"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 20
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "deb5c29f-f61e-459f-9d23-8f45b24ab910",
+                    "resultId": "994e9992-f083-4e8f-e250-b13731f75b27",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "John Smith",
+                            "2": "1980-05-12"
+                        },
+                        {
+                            "0": 2,
+                            "1": "Emily Johnson",
+                            "2": "1990-11-23"
+                        },
+                        {
+                            "0": 3,
+                            "1": "Michael Brown",
+                            "2": "1975-02-08"
+                        },
+                        {
+                            "0": 4,
+                            "1": "Sarah Davis",
+                            "2": "1985-07-30"
+                        },
+                        {
+                            "0": 5,
+                            "1": "David Wilson",
+                            "2": "1978-03-15"
+                        },
+                        {
+                            "0": 6,
+                            "1": "Laura Martinez",
+                            "2": "1992-12-01"
+                        },
+                        {
+                            "0": 7,
+                            "1": "James Taylor",
+                            "2": "1983-09-17"
+                        },
+                        {
+                            "0": 8,
+                            "1": "Olivia Anderson",
+                            "2": "1995-06-25"
+                        },
+                        {
+                            "0": 9,
+                            "1": "Daniel Thomas",
+                            "2": "1987-10-10"
+                        },
+                        {
+                            "0": 10,
+                            "1": "Sophia Moore",
+                            "2": "1991-04-04"
+                        },
+                        {
+                            "0": 11,
+                            "1": "Robert Jackson",
+                            "2": "1979-08-20"
+                        },
+                        {
+                            "0": 12,
+                            "1": "Jessica White",
+                            "2": "1988-01-16"
+                        },
+                        {
+                            "0": 13,
+                            "1": "William Harris",
+                            "2": "1982-04-11"
+                        },
+                        {
+                            "0": 14,
+                            "1": "Megan Martin",
+                            "2": "1993-09-05"
+                        },
+                        {
+                            "0": 15,
+                            "1": "Christopher Thompson",
+                            "2": "1976-12-28"
+                        },
+                        {
+                            "0": 16,
+                            "1": "Amanda Garcia",
+                            "2": "1989-03-22"
+                        },
+                        {
+                            "0": 17,
+                            "1": "Matthew Martinez",
+                            "2": "1981-07-07"
+                        },
+                        {
+                            "0": 18,
+                            "1": "Rachel Lee",
+                            "2": "1994-11-30"
+                        },
+                        {
+                            "0": 19,
+                            "1": "Joshua Clark",
+                            "2": "1986-05-03"
+                        },
+                        {
+                            "0": 20,
+                            "1": "Hannah Rodriguez",
+                            "2": "1990-02-14"
+                        },
+                        {
+                            "0": 21,
+                            "1": "Andrew Lewis",
+                            "2": "1984-10-19"
+                        },
+                        {
+                            "0": 22,
+                            "1": "Elizabeth Walker",
+                            "2": "1987-06-09"
+                        },
+                        {
+                            "0": 23,
+                            "1": "Joseph Hall",
+                            "2": "1977-11-27"
+                        },
+                        {
+                            "0": 24,
+                            "1": "Ashley Young",
+                            "2": "1991-08-15"
+                        },
+                        {
+                            "0": 25,
+                            "1": "Benjamin King",
+                            "2": "1983-01-03"
+                        },
+                        {
+                            "0": 26,
+                            "1": "Natalie Scott",
+                            "2": "1992-04-20"
+                        },
+                        {
+                            "0": 27,
+                            "1": "Samuel Green",
+                            "2": "1978-09-12"
+                        },
+                        {
+                            "0": 28,
+                            "1": "Samantha Adams",
+                            "2": "1985-12-05"
+                        },
+                        {
+                            "0": 29,
+                            "1": "Jonathan Baker",
+                            "2": "1980-03-18"
+                        },
+                        {
+                            "0": 30,
+                            "1": "Victoria Nelson",
+                            "2": "1993-07-24"
+                        },
+                        {
+                            "0": 31,
+                            "1": "Benedict Cumberbatch",
+                            "2": "1969-08-11"
+                        },
+                        {
+                            "0": 32,
+                            "1": "Amy_amanda",
+                            "2": "1987-02-23"
+                        },
+                        {
+                            "0": 312457,
+                            "1": "高師大學生312457號",
+                            "2": "2000-01-01"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "person_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "person_name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "person_birthday",
+                            "field": "2",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 33 records retrieved in 66.767ms"
+                    },
+                    "totalRowCount": 33,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "select * from person",
+                    "updatable": true,
+                    "fullTableName": "person"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 5,
+                "end": 5,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "a4b5da4d-69ea-46a0-f042-f464e17f43c3",
+                            "content": "OK, 1 row affected in 91.487ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 62
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 6,
+                "end": 6,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "ee72100f-bb94-400b-9a3e-b807777d0942"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 18
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "deb5c29f-f61e-459f-9d23-8f45b24ab910",
+                    "resultId": "ee72100f-bb94-400b-9a3e-b807777d0942",
+                    "rows": [
+                        {
+                            "0": 352701,
+                            "1": 312457,
+                            "2": "director"
+                        },
+                        {
+                            "0": 352701,
+                            "1": 312458,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 352701,
+                            "1": 312459,
+                            "2": "actor"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "movie_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "person_id",
+                            "field": "1",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "role_type",
+                            "field": "2",
+                            "dataType": {
+                                "type": 43,
+                                "needsQuotes": true
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 3 records retrieved in 45.314ms"
+                    },
+                    "totalRowCount": 3,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "select * from role",
+                    "updatable": true,
+                    "fullTableName": "role"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 7,
+                "end": 7,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "9edc0d83-03fe-4e6a-985c-c593d0944881",
+                            "content": "OK, 1 row affected in 121.299ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 49
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 8,
+                "end": 13,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "0531fff5-a577-4201-a32e-55ae46b7ee28"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 206
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "deb5c29f-f61e-459f-9d23-8f45b24ab910",
+                    "resultId": "0531fff5-a577-4201-a32e-55ae46b7ee28",
+                    "rows": [
+                        {
+                            "0": 352701,
+                            "1": "Ctrl不了的未來-系到瘋掉"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "movie_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_title",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 1 record retrieved in 75.83ms"
+                    },
+                    "totalRowCount": 1,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT DISTINCT m.movie_id, m.movie_title\nFROM person p\nJOIN role r ON p.person_id = r.person_id\nJOIN movie m ON r.movie_id = m.movie_id\nWHERE p.person_name = '高師大學生312457號'\n  AND r.role_type IN ('director')",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 14,
+                "end": 17,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "417efee2-aad5-4140-f708-a22746f4d336"
+                    ]
+                },
+                "currentHeight": 92.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 232
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "deb5c29f-f61e-459f-9d23-8f45b24ab910",
+                    "resultId": "417efee2-aad5-4140-f708-a22746f4d336",
+                    "rows": [
+                        {
+                            "0": 352701,
+                            "1": "Ctrl不了的未來-系到瘋掉"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "movie_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_title",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 1 record retrieved in 87.483ms"
+                    },
+                    "totalRowCount": 1,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT distinct movie.movie_id,movie.movie_title FROM movie \ninner join role on role.movie_id=movie.movie_id \ninner join person on role.person_id=person.person_id \nWHERE person.person_name LIKE '%1%' AND role.role_type IN ('actor')",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 18,
+                "end": 26,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "7239eef8-51f9-4489-aaa4-63ae5b9028c4"
+                    ]
+                },
+                "currentHeight": 108.59375,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 406
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "deb5c29f-f61e-459f-9d23-8f45b24ab910",
+                    "resultId": "7239eef8-51f9-4489-aaa4-63ae5b9028c4",
+                    "rows": [
+                        {
+                            "0": 3,
+                            "1": "The Forgotten Warrior",
+                            "2": "2007-11-30",
+                            "3": "4.50",
+                            "4": 8.2,
+                            "5": "BBC Studios",
+                            "6": 134,
+                            "7": "Action",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A soldier returns with a secret.",
+                            "11": null,
+                            "12": null
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "movie_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_title",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_release",
+                            "field": "2",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_charge",
+                            "field": "3",
+                            "dataType": {
+                                "type": 10,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 65,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FIXED",
+                                    "NUMERIC",
+                                    "DEC"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_rate",
+                            "field": "4",
+                            "dataType": {
+                                "type": 7,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 53,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FLOAT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "company_name",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_length",
+                            "field": "6",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_genre",
+                            "field": "7",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_grade",
+                            "field": "8",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_picture",
+                            "field": "9",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_describe",
+                            "field": "10",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "directors",
+                            "field": "11",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "actors",
+                            "field": "12",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 1 record retrieved in 101.385ms"
+                    },
+                    "totalRowCount": 1,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT \n    m.*,\n    GROUP_CONCAT(DISTINCT CASE WHEN r1.role_type = 'director' THEN p1.person_name END SEPARATOR ', ') AS directors,\n    GROUP_CONCAT(DISTINCT CASE WHEN r1.role_type = 'actor' THEN p1.person_name END SEPARATOR ', ') AS actors\nFROM movie m\nleft JOIN role r1 ON r1.movie_id = m.movie_id\nleft JOIN person p1 ON r1.person_id = p1.person_id\nwhere m.movie_id=3\nGROUP BY m.movie_id, m.movie_title",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 27,
+                "end": 27,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "2535cef4-dff9-49d6-cc23-841f315eacc2"
+                    ]
+                },
+                "currentHeight": 85.390625,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 18
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "deb5c29f-f61e-459f-9d23-8f45b24ab910",
+                    "resultId": "2535cef4-dff9-49d6-cc23-841f315eacc2",
+                    "rows": [],
+                    "columns": [
+                        {
+                            "title": "movie_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "member_id",
+                            "field": "1",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "rate_stars",
+                            "field": "2",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 0 records retrieved in 59.204ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "select * from rate",
+                    "updatable": true,
+                    "fullTableName": "rate"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 28,
+                "end": 28,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}

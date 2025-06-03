@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM Video</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <nav>
+        <a href="/">SEM Video</a>
+    </nav>
+    <main>
+        <form action="/search" method="get" class="mainbox">
+            <select name="field">
+                <option value="title">片名</option>
+                <option value="director">導演</option>
+                <option value="actor">演員</option>
+            </select>
+            <input type="text" name="find" placeholder="今天我想看..." autocomplete="off">
+        </form>
+        <div class="recommend">
+            <a href="#recommend_movie">
+                <button id="recommend_movie">^</button>
+            </a>
+            <h2>為你推薦</h2>
+            <div class="recommend_movie">
+                <div class="recommend_movie_movie">
+                    <img src="C:\Users\blyth\Pictures\一些東西\FszgSPAacAE2mgE.jpg">
+                    <p>The Owl House</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+    <style>
+        .mainbox::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("{{ url_for('static', filename='saxophone chihuahua.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px);
+            z-index: -1;
+        }
+    </style>
+</html>

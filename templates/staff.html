@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM Video</title>
+    <link rel="stylesheet" type="text/css" href="/static/staff.css">
+</head>
+<body>
+    <nav>
+        <a href="/">SEM Video</a>
+    </nav>
+    <main>
+        <form action="/search" method="get" class="mainbox">
+            <select name="field">
+                <option value="title">片名</option>
+                <option value="director">導演</option>
+                <option value="actor">演員</option>
+            </select>
+            <input type="text" name="find_data" placeholder="今天我想看..." autocomplete="off">
+        </form>
+    </main>
+</body>
+</html>
