@@ -63,11 +63,23 @@ def get_movie_by_code(code):
     conn.close()
     return result
 
+def get_critics_by_code(code):
+    conn = pool.get_connection()
+    cursor = conn.cursor(dictionary=True)
+    query = "select member.member_name,rate.rate_stars from rate join member on member.member_id=rate.member_id where movie_id=%s"
+    cursor.execute(query, (code,))
+    result = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+    return result
+
 @app.route('/title/<int:movie_id>/')
 def movie_detail(movie_id):
     movie = get_movie_by_code(movie_id)  # 查詢 movie_id
+    critics = get_critics_by_code(movie_id)
     if movie:
-        return render_template('movie.html', movie=movie)
+        return render_template('movie.html', movie=movie, critics=critics)
     else:
         return "這個電影的資訊迷失在宇宙盡頭……", 404
     
