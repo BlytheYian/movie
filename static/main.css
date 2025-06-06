@@ -87,13 +87,16 @@ main {
 }.advanced_search select {
     color: black;
     border-radius: 3vh;
-    height: 6vh;
+    height: 5vh;
     width:7vh;
     border: none;
     position: absolute;
     z-index: 100;
 }#field {
     left: -25vw;
+    top: 5vh;
+}#grade_field {
+    left: -20vw;
     top: 5vh;
 }
 summary {
