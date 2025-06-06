@@ -14,11 +14,14 @@
     </nav>
     <main>
         <form action="/search" method="get" class="mainbox">
-            <select name="field">
-                <option value="title">片名</option>
-                <option value="director">導演</option>
-                <option value="actor">演員</option>
-            </select>
+            <details class="advanced_search">
+                <summary></summary>
+                <select name="field" id="field">
+                    <option value="title">片名</option>
+                    <option value="director">導演</option>
+                    <option value="actor">演員</option>
+                </select>
+            </details>
             <input type="text" name="find" placeholder="今天我想看..." autocomplete="off">
         </form>
         <div class="recommend">

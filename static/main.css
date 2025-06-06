@@ -78,17 +78,38 @@ main {
     font-size: 1.1em;
     position: relative;
     top: -20%;
-}.mainbox select {
+}
+.advanced_search{
+    position: absolute;
+    top: 40vh;
+    left: 48vw;
+    cursor: pointer;
+}.advanced_search select {
     color: black;
     border-radius: 3vh;
     height: 6vh;
     width:7vh;
     border: none;
     position: absolute;
-    top: 50%;
-    left: 10%;              /* 控制在 input 左邊的位置 */
-    transform: translateY(-50%);  /* 垂直置中 */
     z-index: 100;
+}#field {
+    left: -25vw;
+    top: 5vh;
+}
+summary {
+    list-style: none;
+    color: white;
+}
+summary::-webkit-details-marker {
+    display: none;
+}summary::before {
+    content: '▼';
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease;
+}details[open] summary::before {
+    content: '▲';
+    list-style: none;
 }
 
 /*recommend*/
