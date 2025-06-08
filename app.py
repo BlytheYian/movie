@@ -29,11 +29,20 @@ def search_movies(keyword):
     conn = pool.get_connection()
     cursor = conn.cursor(dictionary=True)
     field = request.args.get('field')
+    grade_field = request.args.get('grade_field')
+    front_year = request.args.get('front_year')
+    last_year = request.args.get('last_year')
 
     if(field=="title"):
         query = f"SELECT movie_id,movie_title FROM movie WHERE movie_title LIKE %s"
     else:
-        query = f"SELECT distinct movie.movie_id,movie.movie_title FROM movie inner join role on role.movie_id=movie.movie_id inner join person on role.person_id=person.person_id WHERE person.person_name LIKE %s AND role.role_type IN ('{field}');"
+        query = f"SELECT distinct movie.movie_id,movie.movie_title FROM movie inner join role on role.movie_id=movie.movie_id inner join person on role.person_id=person.person_id WHERE person.person_name LIKE %s AND role.role_type IN ('{field}')"
+    if(grade_field!="--"):
+        query += f" and movie.movie_grade in ('{grade_field}')"
+    if(front_year!=""):
+        query += f" and YEAR(movie.movie_release) >= {front_year}"
+    if(last_year!=""):
+        query += f" and YEAR(movie.movie_release) <= {last_year}"
     like_pattern = f"%{keyword}%"  # 模糊搜尋，含有關鍵字
     cursor.execute(query, (like_pattern,))
     results = cursor.fetchall()
@@ -49,7 +58,7 @@ def search():
         return redirect(url_for('index'))
     results = search_movies(keyword)  # 從資料庫查詢
     print(results)
-    return render_template('search.html', results=results)  # 把結果丟回 main.html
+    return render_template('search.html', results=results,count=len(results))  # 把結果丟回 main.html
 
 def get_movie_by_code(code):
     conn = pool.get_connection()

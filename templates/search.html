@@ -13,27 +13,9 @@
         <a href="/staff" class="staff">★</a>
     </nav>
     <main>
-        <form action="/search" method="get" class="mainbox">
-            <div class="advanced_search">
-                <select name="field">
-                    <option value="title">片名</option>
-                    <option value="director">導演</option>
-                    <option value="actor">演員</option>
-                </select>
-            </div>
-            <select name="grade_field">
-                <option value="--">--</option>
-                <option value="0+">0+</option>
-                <option value="6+">6+</option>
-                <option value="12+">12+</option>
-                <option value="15+">15+</option>
-                <option value="18+">18+</option>
-            </select>
-            <input type="text" name="find" placeholder="今天我想看..." autocomplete="off">
-        </form>
         <!-- 顯示搜尋結果（如果有的話） -->
         {% if results %}
-            <h2>搜尋結果：</h2>
+            <h2>搜尋結果： 共{{ count }}筆</h2>
             <div class="search_result">
                 {% for movie in results  %}
                     <a href="{{ url_for('movie_detail', movie_id=movie.movie_id) }}">{{ movie.movie_title }}</a>

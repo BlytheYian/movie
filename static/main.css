@@ -79,7 +79,12 @@ main {
     position: relative;
     top: -20%;
 }
-.advanced_search{
+#advanced_field {
+    width: 50vw;
+    left: -25vw;
+    position: relative;
+    flex-direction: row; /* row 或 column */
+}.advanced_search{
     position: absolute;
     top: 40vh;
     left: 48vw;
@@ -88,16 +93,10 @@ main {
     color: black;
     border-radius: 3vh;
     height: 5vh;
-    width:7vh;
+    width:10vh;
     border: none;
-    position: absolute;
+    position: relative;
     z-index: 100;
-}#field {
-    left: -25vw;
-    top: 5vh;
-}#grade_field {
-    left: -20vw;
-    top: 5vh;
 }
 summary {
     list-style: none;

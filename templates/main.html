@@ -16,19 +16,39 @@
         <form action="/search" method="get" class="mainbox">
             <details class="advanced_search">
                 <summary></summary>
-                <select name="field" id="field">
-                    <option value="title">片名</option>
-                    <option value="director">導演</option>
-                    <option value="actor">演員</option>
-                </select>
-                <select name="grade_field" id="grade_field">
-                    <option value="--">--</option>
-                    <option value="0+">0+</option>
-                    <option value="6+">6+</option>
-                    <option value="12+">12+</option>
-                    <option value="15+">15+</option>
-                    <option value="18+">18+</option>
-                </select>
+                <div id="advanced_field">
+                    <label for="field" id="as">根據:</label>
+                    <select name="field" id="field">
+                        <option value="title">片名</option>
+                        <option value="director">導演</option>
+                        <option value="actor">演員</option>
+                        <option value="actress">女演員</option>
+                    </select>
+                    <label for="grade_field" id="grade">分級:</label>
+                    <select name="grade_field" id="grade_field">
+                        <option value="--">--</option>
+                        <option value="0+">0+</option>
+                        <option value="6+">6+</option>
+                        <option value="12+">12+</option>
+                        <option value="15+">15+</option>
+                        <option value="18+">18+</option>
+                    </select>
+                    <label for="front_year">輸入年份：</label>
+                    <select name="front_year" id="front_year">
+                        <option value="">--</option>
+                        {% for year in range(1900, 2031) %}
+                        <option value="{{ year }}">{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="front_year">-</label>
+                    <select name="last_year" id="last_year">
+                        <option value="">--</option>
+                        {% for year in range(1900, 2031) %}
+                        <option value="{{ year }}">{{ year }}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
             </details>
             <input type="text" name="find" placeholder="今天我想看..." autocomplete="off">
         </form>
