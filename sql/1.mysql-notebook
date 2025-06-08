@@ -1,0 +1,1844 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\nuse `411277031`\nselect * from movie\nselect * from person\nselect * from role\nSELECT m.movie_id,m.movie_title,COUNT(dl.download_id) AS download_count FROM movie m LEFT JOIN download_library dl ON m.movie_id = dl.movie_id GROUP BY m.movie_id, m.movie_title ORDER BY download_count DESC;\n\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 6,
+                    "column": 33
+                },
+                "position": {
+                    "lineNumber": 6,
+                    "column": 33
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 6,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 112
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 2,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "8e14a3ed-6dfc-4329-a95f-44a1865aa8bd",
+                            "content": "OK, 0 records retrieved in 11.64ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 15
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 3,
+                "end": 3,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "8b136fcf-84e5-42ea-c2a1-1cb614237ae5"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 19
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "7407cd4f-e4f8-493d-a4a3-9e332e3b182a",
+                    "resultId": "8b136fcf-84e5-42ea-c2a1-1cb614237ae5",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Shadows of Tomorrow",
+                            "2": "2005-03-14",
+                            "3": "2.99",
+                            "4": 7.8,
+                            "5": "Marvel Studios",
+                            "6": 120,
+                            "7": "Sci-Fi",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A futuristic tale of survival."
+                        },
+                        {
+                            "0": 2,
+                            "1": "Love in Kyoto",
+                            "2": "2006-07-21",
+                            "3": "3.49",
+                            "4": 6.5,
+                            "5": "Warner Bros.",
+                            "6": 102,
+                            "7": "Romance",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A romantic journey in ancient Japan."
+                        },
+                        {
+                            "0": 3,
+                            "1": "The Forgotten Warrior",
+                            "2": "2007-11-30",
+                            "3": "4.50",
+                            "4": 8.2,
+                            "5": "BBC Studios",
+                            "6": 134,
+                            "7": "Action",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A soldier returns with a secret."
+                        },
+                        {
+                            "0": 4,
+                            "1": "Haunting Memories",
+                            "2": "2008-06-03",
+                            "3": "2.99",
+                            "4": 7.3,
+                            "5": "Blumhouse",
+                            "6": 98,
+                            "7": "Horror",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Ghosts from the past never rest."
+                        },
+                        {
+                            "0": 5,
+                            "1": "Circuit Overload",
+                            "2": "2008-10-15",
+                            "3": "3.99",
+                            "4": 6.9,
+                            "5": "Marvel Studios",
+                            "6": 108,
+                            "7": "Sci-Fi",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "AI runs wild in a connected world."
+                        },
+                        {
+                            "0": 6,
+                            "1": "Hearts on Fire",
+                            "2": "2010-02-13",
+                            "3": "2.85",
+                            "4": 7.1,
+                            "5": "Netflix Studios",
+                            "6": 110,
+                            "7": "Drama",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Love and rebellion in the 80s."
+                        },
+                        {
+                            "0": 7,
+                            "1": "Shadows Return",
+                            "2": "2011-05-18",
+                            "3": "3.89",
+                            "4": 8,
+                            "5": "Marvel Studios",
+                            "6": 127,
+                            "7": "Sci-Fi",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "The fight continues across time."
+                        },
+                        {
+                            "0": 8,
+                            "1": "Echoes in the Dark",
+                            "2": "2012-09-09",
+                            "3": "2.50",
+                            "4": 6.8,
+                            "5": "BBC Studios",
+                            "6": 99,
+                            "7": "Horror",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A house with a voice of its own."
+                        },
+                        {
+                            "0": 9,
+                            "1": "Quantum Secrets",
+                            "2": "2013-12-20",
+                            "3": "3.99",
+                            "4": 7.6,
+                            "5": "Warner Bros.",
+                            "6": 119,
+                            "7": "Thriller",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Scientists discover forbidden knowledge."
+                        },
+                        {
+                            "0": 10,
+                            "1": "The Last Melody",
+                            "2": "2014-08-12",
+                            "3": "2.85",
+                            "4": 7,
+                            "5": "Netflix Studios",
+                            "6": 95,
+                            "7": "Musical",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A blind pianists last performance."
+                        },
+                        {
+                            "0": 11,
+                            "1": "Underneath",
+                            "2": "2015-01-22",
+                            "3": "2.99",
+                            "4": 7.5,
+                            "5": "Blumhouse",
+                            "6": 103,
+                            "7": "Horror",
+                            "8": "18+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "What lies beneath the city ruins?"
+                        },
+                        {
+                            "0": 12,
+                            "1": "Dreamscape",
+                            "2": "2015-11-01",
+                            "3": "3.80",
+                            "4": 6.9,
+                            "5": "Marvel Studios",
+                            "6": 130,
+                            "7": "Sci-Fi",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A dream-shifting agent loses control."
+                        },
+                        {
+                            "0": 13,
+                            "1": "The Painters Truth",
+                            "2": "2016-04-09",
+                            "3": "3.89",
+                            "4": 8.9,
+                            "5": "BBC Studios",
+                            "6": 109,
+                            "7": "Drama",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A mystery through color and memory."
+                        },
+                        {
+                            "0": 14,
+                            "1": "Digital Mirage",
+                            "2": "2017-06-14",
+                            "3": "4.00",
+                            "4": 4.7,
+                            "5": "Netflix Studios",
+                            "6": 89,
+                            "7": "Sci-Fi",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "An illusion within the metaverse."
+                        },
+                        {
+                            "0": 15,
+                            "1": "The Howling",
+                            "2": "2018-10-31",
+                            "3": "2.50",
+                            "4": 7.2,
+                            "5": "Blumhouse",
+                            "6": 128,
+                            "7": "Horror",
+                            "8": "18+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Full moon awakens an old curse."
+                        },
+                        {
+                            "0": 16,
+                            "1": "Burning Lies",
+                            "2": "2019-03-02",
+                            "3": "4.60",
+                            "4": 8.5,
+                            "5": "Warner Bros.",
+                            "6": 94,
+                            "7": "Action",
+                            "8": "18+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A fireman turned vigilante."
+                        },
+                        {
+                            "0": 17,
+                            "1": "Cosmic Drift",
+                            "2": "2020-05-25",
+                            "3": "2.99",
+                            "4": 4.5,
+                            "5": "Marvel Studios",
+                            "6": 109,
+                            "7": "Thriller",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Worlds collide through black holes."
+                        },
+                        {
+                            "0": 18,
+                            "1": "Afterglow",
+                            "2": "2020-12-07",
+                            "3": "4.50",
+                            "4": 3.2,
+                            "5": "BBC Studios",
+                            "6": 90,
+                            "7": "Horror",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A girl links with the dead."
+                        },
+                        {
+                            "0": 19,
+                            "1": "Echo Park Murders",
+                            "2": "2021-01-16",
+                            "3": "3.25",
+                            "4": 7.9,
+                            "5": "Netflix Studios",
+                            "6": 112,
+                            "7": "Sci-Fi",
+                            "8": "6+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Detectives uncover deeper secrets."
+                        },
+                        {
+                            "0": 20,
+                            "1": "Soul Bound",
+                            "2": "2021-09-27",
+                            "3": "2.79",
+                            "4": 8.8,
+                            "5": "Blumhouse",
+                            "6": 125,
+                            "7": "Romance",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A love story after a tragedy."
+                        },
+                        {
+                            "0": 21,
+                            "1": "The Last Orbit",
+                            "2": "2022-03-12",
+                            "3": "3.99",
+                            "4": 5.6,
+                            "5": "Marvel Studios",
+                            "6": 133,
+                            "7": "Horror",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "AI and human fall in love."
+                        },
+                        {
+                            "0": 22,
+                            "1": "Whisper",
+                            "2": "2022-10-20",
+                            "3": "3.25",
+                            "4": 7.2,
+                            "5": "BBC Studios",
+                            "6": 137,
+                            "7": "Thriller",
+                            "8": "12+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "A girl meets herself from another world."
+                        },
+                        {
+                            "0": 23,
+                            "1": "Crimson Dawn",
+                            "2": "2023-02-05",
+                            "3": "2.25",
+                            "4": 6.4,
+                            "5": "Warner Bros.",
+                            "6": 93,
+                            "7": "Action",
+                            "8": "15+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "An empire rising from blood."
+                        },
+                        {
+                            "0": 24,
+                            "1": "Parallel",
+                            "2": "2023-07-18",
+                            "3": "3.99",
+                            "4": 5.9,
+                            "5": "Netflix Studios",
+                            "6": 101,
+                            "7": "Sci-Fi",
+                            "8": "18+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Humanity’s last mission in space."
+                        },
+                        {
+                            "0": 25,
+                            "1": "The Harvest",
+                            "2": "2024-04-01",
+                            "3": "2.25",
+                            "4": 8,
+                            "5": "Blumhouse",
+                            "6": 110,
+                            "7": "Thriller",
+                            "8": "0+",
+                            "9": "uploads/movie352701.jpg",
+                            "10": "Worlds collide through black holes."
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "movie_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_title",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "movie_release",
+                            "field": "2",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "movie_charge",
+                            "field": "3",
+                            "dataType": {
+                                "type": 10,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 65,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FIXED",
+                                    "NUMERIC",
+                                    "DEC"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "movie_rate",
+                            "field": "4",
+                            "dataType": {
+                                "type": 7,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 53,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FLOAT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "company_name",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "movie_length",
+                            "field": "6",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "movie_genre",
+                            "field": "7",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "movie_grade",
+                            "field": "8",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "movie_picture",
+                            "field": "9",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "movie_describe",
+                            "field": "10",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 25 records retrieved in 22.418ms"
+                    },
+                    "totalRowCount": 25,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "select * from movie",
+                    "updatable": true,
+                    "fullTableName": "movie"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 4,
+                "end": 4,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "dc8b9574-3aab-4c28-e7ff-eef22deab67f"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 20
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "7407cd4f-e4f8-493d-a4a3-9e332e3b182a",
+                    "resultId": "dc8b9574-3aab-4c28-e7ff-eef22deab67f",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "John Smith",
+                            "2": "1980-05-12"
+                        },
+                        {
+                            "0": 2,
+                            "1": "Emily Johnson",
+                            "2": "1990-11-23"
+                        },
+                        {
+                            "0": 3,
+                            "1": "Michael Brown",
+                            "2": "1975-02-08"
+                        },
+                        {
+                            "0": 4,
+                            "1": "Sarah Davis",
+                            "2": "1985-07-30"
+                        },
+                        {
+                            "0": 5,
+                            "1": "David Wilson",
+                            "2": "1978-03-15"
+                        },
+                        {
+                            "0": 6,
+                            "1": "Laura Martinez",
+                            "2": "1992-12-01"
+                        },
+                        {
+                            "0": 7,
+                            "1": "James Taylor",
+                            "2": "1983-09-17"
+                        },
+                        {
+                            "0": 8,
+                            "1": "Olivia Anderson",
+                            "2": "1995-06-25"
+                        },
+                        {
+                            "0": 9,
+                            "1": "Daniel Thomas",
+                            "2": "1987-10-10"
+                        },
+                        {
+                            "0": 10,
+                            "1": "Sophia Moore",
+                            "2": "1991-04-04"
+                        },
+                        {
+                            "0": 11,
+                            "1": "Robert Jackson",
+                            "2": "1979-08-20"
+                        },
+                        {
+                            "0": 12,
+                            "1": "Jessica White",
+                            "2": "1988-01-16"
+                        },
+                        {
+                            "0": 13,
+                            "1": "William Harris",
+                            "2": "1982-04-11"
+                        },
+                        {
+                            "0": 14,
+                            "1": "Megan Martin",
+                            "2": "1993-09-05"
+                        },
+                        {
+                            "0": 15,
+                            "1": "Christopher Thompson",
+                            "2": "1976-12-28"
+                        },
+                        {
+                            "0": 16,
+                            "1": "Amanda Garcia",
+                            "2": "1989-03-22"
+                        },
+                        {
+                            "0": 17,
+                            "1": "Matthew Martinez",
+                            "2": "1981-07-07"
+                        },
+                        {
+                            "0": 18,
+                            "1": "Rachel Lee",
+                            "2": "1994-11-30"
+                        },
+                        {
+                            "0": 19,
+                            "1": "Joshua Clark",
+                            "2": "1986-05-03"
+                        },
+                        {
+                            "0": 20,
+                            "1": "Hannah Rodriguez",
+                            "2": "1990-02-14"
+                        },
+                        {
+                            "0": 21,
+                            "1": "Andrew Lewis",
+                            "2": "1984-10-19"
+                        },
+                        {
+                            "0": 22,
+                            "1": "Elizabeth Walker",
+                            "2": "1987-06-09"
+                        },
+                        {
+                            "0": 23,
+                            "1": "Joseph Hall",
+                            "2": "1977-11-27"
+                        },
+                        {
+                            "0": 24,
+                            "1": "Ashley Young",
+                            "2": "1991-08-15"
+                        },
+                        {
+                            "0": 25,
+                            "1": "Benjamin King",
+                            "2": "1983-01-03"
+                        },
+                        {
+                            "0": 26,
+                            "1": "Natalie Scott",
+                            "2": "1992-04-20"
+                        },
+                        {
+                            "0": 27,
+                            "1": "Samuel Green",
+                            "2": "1978-09-12"
+                        },
+                        {
+                            "0": 28,
+                            "1": "Samantha Adams",
+                            "2": "1985-12-05"
+                        },
+                        {
+                            "0": 29,
+                            "1": "Jonathan Baker",
+                            "2": "1980-03-18"
+                        },
+                        {
+                            "0": 30,
+                            "1": "Victoria Nelson",
+                            "2": "1993-07-24"
+                        },
+                        {
+                            "0": 31,
+                            "1": "Benedict Cumberbatch",
+                            "2": "1969-08-11"
+                        },
+                        {
+                            "0": 32,
+                            "1": "Amy_amanda",
+                            "2": "1987-02-23"
+                        },
+                        {
+                            "0": 312457,
+                            "1": "高師大學生312457號",
+                            "2": "2000-01-01"
+                        },
+                        {
+                            "0": 312458,
+                            "1": "高師大學生312458號",
+                            "2": "2000-01-01"
+                        },
+                        {
+                            "0": 312459,
+                            "1": "高師大學生312459號",
+                            "2": "2000-01-01"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "person_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "person_name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "person_birthday",
+                            "field": "2",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 35 records retrieved in 14.128ms"
+                    },
+                    "totalRowCount": 35,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "select * from person",
+                    "updatable": true,
+                    "fullTableName": "person"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 5,
+                "end": 5,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "ccfc9842-4dec-46f5-e305-b3cc6d5ca6f4"
+                    ]
+                },
+                "currentHeight": 352,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 18
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "7407cd4f-e4f8-493d-a4a3-9e332e3b182a",
+                    "resultId": "ccfc9842-4dec-46f5-e305-b3cc6d5ca6f4",
+                    "rows": [
+                        {
+                            "0": 12,
+                            "1": 1,
+                            "2": "director"
+                        },
+                        {
+                            "0": 12,
+                            "1": 1,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 24,
+                            "1": 1,
+                            "2": "director"
+                        },
+                        {
+                            "0": 1,
+                            "1": 2,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 24,
+                            "1": 2,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 1,
+                            "1": 3,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 11,
+                            "1": 3,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 1,
+                            "1": 4,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 13,
+                            "1": 4,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 2,
+                            "1": 5,
+                            "2": "director"
+                        },
+                        {
+                            "0": 15,
+                            "1": 5,
+                            "2": "director"
+                        },
+                        {
+                            "0": 16,
+                            "1": 5,
+                            "2": "director"
+                        },
+                        {
+                            "0": 18,
+                            "1": 5,
+                            "2": "director"
+                        },
+                        {
+                            "0": 21,
+                            "1": 5,
+                            "2": "director"
+                        },
+                        {
+                            "0": 2,
+                            "1": 6,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 11,
+                            "1": 6,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 5,
+                            "1": 7,
+                            "2": "director"
+                        },
+                        {
+                            "0": 15,
+                            "1": 7,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 5,
+                            "1": 8,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 16,
+                            "1": 8,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 3,
+                            "1": 9,
+                            "2": "director"
+                        },
+                        {
+                            "0": 13,
+                            "1": 9,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 3,
+                            "1": 10,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 16,
+                            "1": 10,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 20,
+                            "1": 10,
+                            "2": "director"
+                        },
+                        {
+                            "0": 3,
+                            "1": 11,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 13,
+                            "1": 11,
+                            "2": "director"
+                        },
+                        {
+                            "0": 24,
+                            "1": 11,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 2,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 3,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 4,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 5,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 7,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 8,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 11,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 18,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 21,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 24,
+                            "1": 12,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 4,
+                            "1": 13,
+                            "2": "director"
+                        },
+                        {
+                            "0": 15,
+                            "1": 13,
+                            "2": "director"
+                        },
+                        {
+                            "0": 19,
+                            "1": 13,
+                            "2": "director"
+                        },
+                        {
+                            "0": 22,
+                            "1": 13,
+                            "2": "director"
+                        },
+                        {
+                            "0": 25,
+                            "1": 13,
+                            "2": "director"
+                        },
+                        {
+                            "0": 5,
+                            "1": 14,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 14,
+                            "1": 14,
+                            "2": "director"
+                        },
+                        {
+                            "0": 25,
+                            "1": 14,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 4,
+                            "1": 15,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 12,
+                            "1": 15,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 22,
+                            "1": 15,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 4,
+                            "1": 16,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 18,
+                            "1": 16,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 21,
+                            "1": 16,
+                            "2": "actress"
+                        },
+                        {
+                            "0": 6,
+                            "1": 17,
+                            "2": "director"
+                        },
+                        {
+                            "0": 14,
+                            "1": 17,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 23,
+                            "1": 17,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 6,
+                            "1": 18,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 11,
+                            "1": 18,
+                            "2": "director"
+                        },
+                        {
+                            "0": 22,
+                            "1": 18,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 6,
+                            "1": 19,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 18,
+                            "1": 19,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 25,
+                            "1": 19,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 6,
+                            "1": 20,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 13,
+                            "1": 20,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 19,
+                            "1": 20,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 7,
+                            "1": 21,
+                            "2": "director"
+                        },
+                        {
+                            "0": 8,
+                            "1": 21,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 21,
+                            "1": 21,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 7,
+                            "1": 22,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 15,
+                            "1": 22,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 25,
+                            "1": 22,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 7,
+                            "1": 23,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 17,
+                            "1": 23,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 8,
+                            "1": 24,
+                            "2": "director"
+                        },
+                        {
+                            "0": 12,
+                            "1": 24,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 23,
+                            "1": 24,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 10,
+                            "1": 25,
+                            "2": "director"
+                        },
+                        {
+                            "0": 17,
+                            "1": 25,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 20,
+                            "1": 25,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 8,
+                            "1": 26,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 14,
+                            "1": 26,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 19,
+                            "1": 26,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 9,
+                            "1": 27,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 13,
+                            "1": 27,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 9,
+                            "1": 28,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 15,
+                            "1": 28,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 16,
+                            "1": 28,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 10,
+                            "1": 29,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 12,
+                            "1": 29,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 10,
+                            "1": 30,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 14,
+                            "1": 30,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 23,
+                            "1": 30,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 1,
+                            "1": 31,
+                            "2": "director"
+                        },
+                        {
+                            "0": 2,
+                            "1": 31,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 6,
+                            "1": 31,
+                            "2": "director"
+                        },
+                        {
+                            "0": 6,
+                            "1": 31,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 8,
+                            "1": 31,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 9,
+                            "1": 31,
+                            "2": "director"
+                        },
+                        {
+                            "0": 9,
+                            "1": 31,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 10,
+                            "1": 31,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 17,
+                            "1": 31,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 19,
+                            "1": 31,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 20,
+                            "1": 31,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 23,
+                            "1": 31,
+                            "2": "director"
+                        },
+                        {
+                            "0": 17,
+                            "1": 32,
+                            "2": "director"
+                        },
+                        {
+                            "0": 20,
+                            "1": 32,
+                            "2": "actor"
+                        },
+                        {
+                            "0": 22,
+                            "1": 32,
+                            "2": "actor"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "movie_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "person_id",
+                            "field": "1",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "role_type",
+                            "field": "2",
+                            "dataType": {
+                                "type": 43,
+                                "needsQuotes": true
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 106 records retrieved in 11.745ms"
+                    },
+                    "totalRowCount": 106,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "select * from role",
+                    "updatable": true,
+                    "fullTableName": "role"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 6,
+                "end": 7,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "e8e68b9c-a7c2-4d4e-f679-3ee7c291b2eb"
+                    ]
+                },
+                "currentHeight": 352,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 207
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 207,
+                            "length": 5
+                        },
+                        "contentStart": 206,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "7407cd4f-e4f8-493d-a4a3-9e332e3b182a",
+                    "resultId": "e8e68b9c-a7c2-4d4e-f679-3ee7c291b2eb",
+                    "rows": [
+                        {
+                            "0": 2,
+                            "1": "Love in Kyoto",
+                            "2": 10
+                        },
+                        {
+                            "0": 5,
+                            "1": "Circuit Overload",
+                            "2": 8
+                        },
+                        {
+                            "0": 7,
+                            "1": "Shadows Return",
+                            "2": 8
+                        },
+                        {
+                            "0": 17,
+                            "1": "Cosmic Drift",
+                            "2": 8
+                        },
+                        {
+                            "0": 23,
+                            "1": "Crimson Dawn",
+                            "2": 8
+                        },
+                        {
+                            "0": 11,
+                            "1": "Underneath",
+                            "2": 7
+                        },
+                        {
+                            "0": 13,
+                            "1": "The Painters Truth",
+                            "2": 7
+                        },
+                        {
+                            "0": 19,
+                            "1": "Echo Park Murders",
+                            "2": 7
+                        },
+                        {
+                            "0": 24,
+                            "1": "Parallel",
+                            "2": 7
+                        },
+                        {
+                            "0": 25,
+                            "1": "The Harvest",
+                            "2": 7
+                        },
+                        {
+                            "0": 10,
+                            "1": "The Last Melody",
+                            "2": 4
+                        },
+                        {
+                            "0": 1,
+                            "1": "Shadows of Tomorrow",
+                            "2": 3
+                        },
+                        {
+                            "0": 3,
+                            "1": "The Forgotten Warrior",
+                            "2": 3
+                        },
+                        {
+                            "0": 9,
+                            "1": "Quantum Secrets",
+                            "2": 3
+                        },
+                        {
+                            "0": 15,
+                            "1": "The Howling",
+                            "2": 3
+                        },
+                        {
+                            "0": 18,
+                            "1": "Afterglow",
+                            "2": 3
+                        },
+                        {
+                            "0": 20,
+                            "1": "Soul Bound",
+                            "2": 3
+                        },
+                        {
+                            "0": 4,
+                            "1": "Haunting Memories",
+                            "2": 2
+                        },
+                        {
+                            "0": 6,
+                            "1": "Hearts on Fire",
+                            "2": 2
+                        },
+                        {
+                            "0": 8,
+                            "1": "Echoes in the Dark",
+                            "2": 2
+                        },
+                        {
+                            "0": 21,
+                            "1": "The Last Orbit",
+                            "2": 2
+                        },
+                        {
+                            "0": 22,
+                            "1": "Whisper",
+                            "2": 2
+                        },
+                        {
+                            "0": 12,
+                            "1": "Dreamscape",
+                            "2": 1
+                        },
+                        {
+                            "0": 16,
+                            "1": "Burning Lies",
+                            "2": 1
+                        },
+                        {
+                            "0": 14,
+                            "1": "Digital Mirage",
+                            "2": 0
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "movie_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "movie_title",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "download_count",
+                            "field": "2",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 25 records retrieved in 13.116ms"
+                    },
+                    "totalRowCount": 25,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT \n    m.movie_id,\n    m.movie_title,\n    COUNT(dl.download_id) AS download_count\nFROM \n    movie m\nLEFT JOIN \n    download_library dl ON m.movie_id = dl.movie_id\nGROUP BY \n    m.movie_id, m.movie_title\nORDER BY \n    download_count DESC",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 8,
+                "end": 8,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}

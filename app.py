@@ -32,11 +32,12 @@ def search_movies(keyword):
     grade_field = request.args.get('grade_field')
     front_year = request.args.get('front_year')
     last_year = request.args.get('last_year')
-
+    query = "SELECT distinct movie.movie_id,movie.movie_title FROM movie"
+    
     if(field=="title"):
-        query = f"SELECT movie_id,movie_title FROM movie WHERE movie_title LIKE %s"
+        query += f" WHERE movie_title LIKE %s"
     else:
-        query = f"SELECT distinct movie.movie_id,movie.movie_title FROM movie inner join role on role.movie_id=movie.movie_id inner join person on role.person_id=person.person_id WHERE person.person_name LIKE %s AND role.role_type IN ('{field}')"
+        query += f" inner join role on role.movie_id=movie.movie_id inner join person on role.person_id=person.person_id WHERE person.person_name LIKE %s AND role.role_type IN ('{field}')"
     if(grade_field!="--"):
         query += f" and movie.movie_grade in ('{grade_field}')"
     if(front_year!=""):
@@ -54,8 +55,6 @@ def search_movies(keyword):
 @app.route('/search')
 def search():
     keyword = request.args.get('find')  # 取得搜尋字串
-    if not keyword:
-        return redirect(url_for('index'))
     results = search_movies(keyword)  # 從資料庫查詢
     print(results)
     return render_template('search.html', results=results,count=len(results))  # 把結果丟回 main.html

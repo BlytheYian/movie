@@ -36,14 +36,14 @@
                     <label for="front_year">輸入年份：</label>
                     <select name="front_year" id="front_year">
                         <option value="">--</option>
-                        {% for year in range(1900, 2031) %}
+                        {% for year in range(2000, 2031) %}
                         <option value="{{ year }}">{{ year }}</option>
                         {% endfor %}
                     </select>
                     <label for="front_year">-</label>
                     <select name="last_year" id="last_year">
                         <option value="">--</option>
-                        {% for year in range(1900, 2031) %}
+                        {% for year in range(2000, 2031) %}
                         <option value="{{ year }}">{{ year }}</option>
                         {% endfor %}
                     </select>
