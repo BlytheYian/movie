@@ -237,7 +237,7 @@ def staff_page_search():
 
 @app.route('/staff/search/filter')
 def dynamic_search():
-    keyword = request.args.get('find')
+    genre = request.args.get('genre')
     target = request.args.get('target')
     condition = request.args.get('condition')
     order = request.args.get('order', 'desc')
@@ -253,7 +253,7 @@ def dynamic_search():
                 SELECT m.movie_title AS name, COUNT(*) AS value
                 FROM download_library d
                 JOIN movie m ON d.movie_id = m.movie_id
-                where m.movie_title like %s
+                where m.movie_genre=%s
                 GROUP BY d.movie_id
                 ORDER BY value {order} LIMIT %s
             """
@@ -262,7 +262,7 @@ def dynamic_search():
                 SELECT m.movie_title AS name, SUM(p.payment_amount) AS value
                 FROM payment p
                 JOIN movie m ON p.movie_id = m.movie_id
-                where m.movie_title like %s
+                where m.movie_genre=%s
                 GROUP BY p.movie_id
                 ORDER BY value {order} LIMIT %s
             """
@@ -271,10 +271,11 @@ def dynamic_search():
         if condition == 'downloads':
             query = f"""
                 SELECT mem.member_name AS name, COUNT(*) AS value
-                FROM payment p
-                JOIN member mem ON p.member_id = mem.member_id
-                where mem.member_name like %s
-                GROUP BY p.member_id
+                FROM download_library d
+                JOIN member mem ON d.member_id = mem.member_id
+                JOIN movie m ON d.movie_id = m.movie_id
+                where m.movie_genre like %s
+                GROUP BY d.member_id
                 ORDER BY value {order} LIMIT %s
             """
         elif condition == 'revenue':
@@ -282,7 +283,8 @@ def dynamic_search():
                 SELECT mem.member_name AS name, SUM(p.payment_amount) AS value
                 FROM payment p
                 JOIN member mem ON p.member_id = mem.member_id
-                where mem.member_name like %s
+                JOIN movie m ON p.movie_id = m.movie_id
+                where m.movie_genre like %s
                 GROUP BY p.member_id
                 ORDER BY value {order} LIMIT %s
             """
@@ -291,8 +293,8 @@ def dynamic_search():
         if condition == 'downloads':
              query = f"""
                 SELECT m.movie_genre AS name, COUNT(*) AS value
-                FROM payment p
-                JOIN movie m ON p.movie_id = m.movie_id
+                FROM download_library d
+                JOIN movie m ON d.movie_id = m.movie_id
                 where m.movie_genre like %s
                 GROUP BY m.movie_genre
                 ORDER BY value {order} LIMIT %s
@@ -310,8 +312,10 @@ def dynamic_search():
     elif target == 'month':
         if condition == 'downloads':
             query = f"""
-                SELECT DATE_FORMAT(p.payment_date, '%Y-%m') AS name, COUNT(*) AS value
-                FROM payment p
+                SELECT DATE_FORMAT(d.download_date, '%Y-%m') AS name, COUNT(*) AS value
+                FROM download_library d
+                JOIN movie m ON d.movie_id = m.movie_id
+                where m.movie_genre like %s
                 GROUP BY name
                 ORDER BY value {order} LIMIT %s
             """
@@ -319,6 +323,8 @@ def dynamic_search():
             query = f"""
                 SELECT DATE_FORMAT(p.payment_date, '%Y-%m') AS name, SUM(p.payment_amount) AS value
                 FROM payment p
+                JOIN movie m ON p.movie_id = m.movie_id
+                where m.movie_genre like %s
                 GROUP BY name
                 ORDER BY value {order} LIMIT %s
             """
@@ -326,11 +332,10 @@ def dynamic_search():
     else:
         query = "SELECT '無效查詢' AS name, 0 AS value"
     
-    if target != 'month':
-        like_pattern = f"%{keyword}%"
-        cursor.execute(query, (like_pattern, limit,))
-    else:
-        cursor.execute(query, (limit,))
+    if not genre:
+        genre="%"
+
+    cursor.execute(query, (genre, limit,))
     result = cursor.fetchall()
     cursor.close()
     conn.close()

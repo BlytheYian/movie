@@ -14,8 +14,7 @@
     </nav>
     <main>
        <form action="/staff/search/filter" method="get">
-            <input type="text" name="find" placeholder="關鍵字..." autocomplete="off">
-            <label>查詢類別：</label>
+            <label>查詢目標：</label>
             <select name="target">
                 <option value="movie">電影</option>
                 <option value="member">會員</option>
@@ -29,10 +28,38 @@
                 <option value="revenue">付款金額/銷售最佳</option>
             </select>
 
+            <label>電影分類:</label>
+            <select name="genre">
+                <option value="">--</option>
+                <option value="sci-fi">科幻</option>
+                <option value="action">動作</option>
+                <option value="romance">浪漫</option>
+                <option value="horror">恐怖</option>
+                <option value="thriller">驚悚</option>
+                <option value="drama">戲劇</option>
+                <option value="comedy">喜劇</option>
+                <option value="musical">音樂</option>
+            </select>
+
             <label>排序：</label>
             <select name="order">
                 <option value="desc">最多 ➤ 最少</option>
                 <option value="asc">最少 ➤ 最多</option>
+            </select>
+
+            <label for="front_year">輸入年份：</label>
+            <select name="front_year" id="front_year">
+                <option value="">--</option>
+                {% for year in range(2000, 2031) %}
+                <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+            </select>
+            <label for="front_year">-</label>
+            <select name="last_year" id="last_year">
+                <option value="">--</option>
+                {% for year in range(2000, 2031) %}
+                <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
             </select>
 
             <label>篩選數量：</label>
