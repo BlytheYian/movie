@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM Video</title>
+    <link rel="stylesheet" type="text/css" href="/static/staff.css">
+</head>
+<body>
+    <nav>
+        <a href="/">SEM Video</a>
+        <a href="/staff" class="staff">★</a>
+    </nav>
+    <main>
+        <h2>{{ member_name.member_name }} 的交易紀錄</h2>
+
+        <table border="3">
+        <thead>
+            <tr>
+            <th>下載日期</th>
+            <th>電影名稱</th>
+            <th>付款金額</th>
+            <th>付款日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tx in transactions %}
+            <tr>
+            <td>{{ tx.download_date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ tx.movie_title }}</td>
+            <td>{{ tx.payment_amount or '未付款' }}</td>
+            <td>{{ tx.payment_date.strftime('%Y-%m-%d') or '—' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </main>
+</body>
+</html>

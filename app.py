@@ -205,6 +205,32 @@ def delete_member(member_id):
     conn.close()
     return redirect('/staff/member')
 
+@app.route('/staff/member/<int:member_id>/transactions')
+def view_transactions(member_id):
+    conn = pool.get_connection()
+    cursor = conn.cursor(dictionary=True)
+    
+    query = "select member.member_name from member where member.member_id=%s"
+    cursor.execute(query, (member_id,))
+    member_name = cursor.fetchone()
+
+    query = """
+        SELECT dl.download_date, m.movie_title,
+               p.payment_amount, p.payment_date
+        FROM download_library dl
+        JOIN movie m ON dl.movie_id = m.movie_id
+        LEFT JOIN payment p ON dl.member_id = p.member_id AND dl.movie_id = p.movie_id
+        WHERE dl.member_id = %s
+        ORDER BY dl.download_date DESC
+    """
+    cursor.execute(query, (member_id,))
+    transactions = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template('staff_mem_transactions.html', transactions=transactions, member_name=member_name)
+
 @app.route('/staff/search')
 def staff_page_search():
     return render_template('staff_edit.html')

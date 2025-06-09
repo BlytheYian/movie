@@ -52,6 +52,9 @@
                     <button type="submit" onclick="return confirm('確定要刪除嗎？')">刪除</button>
                 </form>
                     </td>
+                    <td>
+                        <a href="{{ url_for('view_transactions', member_id=member.member_id) }}"><button>查看紀錄</button></a>
+                    </td>
             </tr>
             {% endfor %}
         </tbody>
