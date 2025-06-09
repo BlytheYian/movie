@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM Video</title>
+    <link rel="stylesheet" type="text/css" href="/static/staff.css">
+</head>
+<body>
+    <nav>
+        <a href="/">SEM Video</a>
+        <a href="/staff" class="staff">★</a>
+    </nav>
+    <main><h1>用戶管理</h1>
+
+    <!-- 新增電影表單 -->
+    <form action="/staff/member/add" method="post">
+        <input name="member_name" placeholder="用戶名稱" autocomplete="off" required>
+        <input name="email" placeholder="email" autocomplete="off" required>
+        <input name="character" placeholder="身分" autocomplete="off">
+        <button type="submit">新增</button>
+    </form>
+
+    <hr>
+
+    <!-- 顯示現有電影列表 -->
+    <h2>用戶列表</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>用戶名稱</th>
+                <th>電子郵件</th>
+                <th>身分</th>
+                <th>狀態</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in member %}
+            <tr>
+                <form action="/staff/member/update/{{ member.member_id }}" method="post">
+                    <td>{{ member.member_id }}</td>
+                    <td><input name="member_name" placeholder="用戶名稱" value="{{ member.member_name }}" autocomplete="off"></td>
+                    <td><input name="email" placeholder="email" value="{{ member.member_email }}" autocomplete="off"></td>
+                    <td><input name="character" placeholder="身分" value="{{ member.member_character }}" autocomplete="off"></td>
+                    <td><p name="status" placeholder="???">{{ member.member_status }}</p></td>
+                    <td>
+                        <button type="submit">更新</button>
+                </form>
+                <form action="/staff/member/delete/{{ member.member_id }}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('確定要刪除嗎？')">刪除</button>
+                </form>
+                    </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </main>
+</body>
+</html>

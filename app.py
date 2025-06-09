@@ -99,15 +99,112 @@ def staff_page():
 def staff_page_movie():
     conn = pool.get_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT movie_id, movie_title, movie_release, movie_grade FROM movie")
+    cursor.execute("SELECT * FROM movie")
     movies = cursor.fetchall()
     cursor.close()
     conn.close()
     return render_template('staff_edit.html', movies=movies)
+@app.route('/staff/movie/add', methods=['POST'])
+def add_movie():
+    title = request.form['title']
+    release_year = request.form['release_year']
+    charge = request.form['charge']
+    length = request.form['length']
+    genre = request.form['genre']
+    grade = request.form['grade']
+    picture = request.form['picture']
+    desc = request.form['describe']
+    conn = pool.get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM movie")
+    idnum = cursor.fetchone()[0]+1
+    cursor.execute("INSERT INTO movie (movie_id, movie_title, movie_release, movie_charge, movie_length, movie_genre, movie_grade, movie_picture, movie_describe) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                   (idnum, title, release_year, charge, length, genre, grade, picture, desc))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/staff/movie')
 
-@app.route('/staff/member')
+@app.route('/staff/movie/update/<int:movie_id>', methods=['POST'])
+def update_movie(movie_id):
+    title = request.form['title']
+    release_year = request.form['release_year']
+    charge = request.form['charge']
+    length = request.form['length']
+    genre = request.form['genre']
+    grade = request.form['grade']
+    picture = request.form['picture']
+    desc = request.form['describe']
+    conn = pool.get_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE movie SET movie_title=%s, movie_release=%s, movie_charge=%s, movie_length=%s, movie_genre=%s, movie_grade=%s, movie_picture=%s, movie_describe=%s WHERE movie_id=%s",
+                   (title, release_year, charge, length, genre, grade, picture, desc, movie_id))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/staff/movie')
+
+@app.route('/staff/movie/delete/<int:movie_id>', methods=['POST'])
+def delete_movie(movie_id):
+    conn = pool.get_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM movie WHERE movie_id=%s", (movie_id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/staff/movie')
+
+@app.route('/staff/member', methods=['GET'])
 def staff_page_member():
-    return render_template('staff_edit.html')
+    conn = pool.get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM member")
+    member = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('staff_mem.html', member=member)
+
+@app.route('/staff/member/add', methods=['POST'])
+def add_member():
+    member_name = request.form['member_name']
+    email = request.form['email']
+    character = request.form['character']
+    status = "inactive"
+    conn = pool.get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM member")
+    idnum = cursor.fetchone()[0]+1
+    cursor.execute("INSERT INTO member (member_id, member_name, member_email, member_character, member_status) VALUES (%s, %s, %s, %s, %s)",
+                   (idnum, member_name, email, character, status))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/staff/member')
+
+@app.route('/staff/member/update/<int:member_id>', methods=['POST'])
+def update_member(member_id):
+    member_name = request.form['member_name']
+    email = request.form['email']
+    character = request.form['character']
+    conn = pool.get_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE member SET member_name=%s, member_email=%s, member_character=%s WHERE member_id=%s",
+                   (member_name, email, character, member_id))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/staff/member')
+
+@app.route('/staff/member/delete/<int:member_id>', methods=['POST'])
+def delete_member(member_id):
+    conn = pool.get_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM member WHERE member_id=%s", (member_id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/staff/member')
+
 @app.route('/staff/search')
 def staff_page_search():
     return render_template('staff_edit.html')

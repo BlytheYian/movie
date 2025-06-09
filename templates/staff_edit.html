@@ -16,9 +16,14 @@
 
     <!-- 新增電影表單 -->
     <form action="/staff/movie/add" method="post">
-        <input name="title" placeholder="電影名稱" required>
-        <input name="release_year" type="number" min="2000" max="2031" placeholder="上映年份" required>
-        <input name="grade" placeholder="分級">
+        <input name="title" placeholder="電影名稱" autocomplete="off" required>
+        <input name="release_year" type="date" placeholder="上映年份" autocomplete="off" required>
+        <input name="charge" placeholder="價格" autocomplete="off">
+        <input name="length" placeholder="長度(min.)" autocomplete="off">
+        <input name="genre" placeholder="分類" autocomplete="off">
+        <input name="grade" placeholder="分級" autocomplete="off">
+        <input name="picture" placeholder="電影封面" value="uploads/movie352701.jpg" autocomplete="off">
+        <input name="describe" placeholder="電影描述..." autocomplete="off">
         <button type="submit">新增</button>
     </form>
 
@@ -32,7 +37,12 @@
                 <th>ID</th>
                 <th>片名</th>
                 <th>年份</th>
+                <th>價格</th>
+                <th>片長</th>
+                <th>分類</th>
                 <th>分級</th>
+                <th>封面</th>
+                <th>描述</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -41,9 +51,14 @@
             <tr>
                 <form action="/staff/movie/update/{{ movie.movie_id }}" method="post">
                     <td>{{ movie.movie_id }}</td>
-                    <td><input name="title" value="{{ movie.movie_title }}"></td>
-                    <td><input name="release_year" type="date" value="{{ movie.movie_release }}"></td>
-                    <td><input name="grade" value="{{ movie.movie_grade }}"></td>
+                    <td><input name="title" placeholder="電影名稱" value="{{ movie.movie_title }}" autocomplete="off"></td>
+                    <td><input name="release_year" type="date" placeholder="上映年份" value="{{ movie.movie_release }}" autocomplete="off"></td>
+                    <td><input name="charge" placeholder="價格" value="{{ movie.movie_charge }}" autocomplete="off"></td>
+                    <td><input name="length" placeholder="長度(min.)" value="{{ movie.movie_length }}" autocomplete="off"></td>
+                    <td><input name="genre" placeholder="分類" value="{{ movie.movie_genre }}" autocomplete="off"></td>
+                    <td><input name="grade" placeholder="分級" value="{{ movie.movie_grade }}" autocomplete="off"></td>
+                    <td><input name="picture" placeholder="電影封面" value="{{ movie.movie_picture }}" autocomplete="off"></td>
+                    <td><input name="describe" placeholder="電影描述..." value="{{ movie.movie_describe }}" autocomplete="off"></td>
                     <td>
                         <button type="submit">更新</button>
                 </form>
