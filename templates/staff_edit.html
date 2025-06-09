@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM Video</title>
+    <link rel="stylesheet" type="text/css" href="/static/staff.css">
+</head>
+<body>
+    <nav>
+        <a href="/">SEM Video</a>
+        <a href="/staff" class="staff">★</a>
+    </nav>
+    <main><h1>電影管理</h1>
+
+    <!-- 新增電影表單 -->
+    <form action="/staff/movie/add" method="post">
+        <input name="title" placeholder="電影名稱" required>
+        <input name="release_year" type="number" min="2000" max="2031" placeholder="上映年份" required>
+        <input name="grade" placeholder="分級">
+        <button type="submit">新增</button>
+    </form>
+
+    <hr>
+
+    <!-- 顯示現有電影列表 -->
+    <h2>現有電影</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>片名</th>
+                <th>年份</th>
+                <th>分級</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+            <tr>
+                <form action="/staff/movie/update/{{ movie.movie_id }}" method="post">
+                    <td>{{ movie.movie_id }}</td>
+                    <td><input name="title" value="{{ movie.movie_title }}"></td>
+                    <td><input name="release_year" type="date" value="{{ movie.movie_release }}"></td>
+                    <td><input name="grade" value="{{ movie.movie_grade }}"></td>
+                    <td>
+                        <button type="submit">更新</button>
+                </form>
+                <form action="/staff/movie/delete/{{ movie.movie_id }}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('確定要刪除嗎？')">刪除</button>
+                </form>
+                    </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </main>
+</body>
+</html>

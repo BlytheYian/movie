@@ -44,26 +44,3 @@ main {
 }
 
 /*mainbox*/
-.mainbox input{
-    background-color: #ffffff;
-    border: none;
-    border-radius: 3vh;
-    width: 60%;
-    height: 5vh;
-    padding: 3vh;
-    padding-left: 11vh;
-    font-size: 1.1em;
-    position: relative;
-    top: -20%;
-}
-
-/*advanced search*/
-.advanced_search select {
-    color: black;
-    border-radius: 3vh;
-    height: 6vh;
-    width:7vh;
-    border: none;
-    position: absolute;
-    z-index: 100;
-}

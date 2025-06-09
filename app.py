@@ -63,7 +63,7 @@ def get_movie_by_code(code):
     conn = pool.get_connection()
     cursor = conn.cursor(dictionary=True)
 
-    query = "SELECT m.*,GROUP_CONCAT(DISTINCT CASE WHEN r1.role_type = 'director' THEN p1.person_name END SEPARATOR ', ') AS directors,GROUP_CONCAT(DISTINCT CASE WHEN r1.role_type = 'actor' THEN p1.person_name END SEPARATOR ', ') AS actors FROM movie m left JOIN role r1 ON r1.movie_id = m.movie_id left JOIN person p1 ON r1.person_id = p1.person_id where m.movie_id=%s GROUP BY m.movie_id, m.movie_title;"
+    query = "SELECT m.*,GROUP_CONCAT(DISTINCT CASE WHEN r1.role_type = 'director' THEN p1.person_name END SEPARATOR ', ') AS directors,GROUP_CONCAT(DISTINCT CASE WHEN r1.role_type = 'actor' or r1.role_type = 'actress' THEN p1.person_name END SEPARATOR ', ') AS actors FROM movie m left JOIN role r1 ON r1.movie_id = m.movie_id left JOIN person p1 ON r1.person_id = p1.person_id where m.movie_id=%s GROUP BY m.movie_id, m.movie_title;"
     cursor.execute(query, (code,))
     result = cursor.fetchone()
 
@@ -93,8 +93,24 @@ def movie_detail(movie_id):
     
 @app.route('/staff')
 def staff_page():
-    keyword = request.args.get('find_data')  # 取得搜尋字串
     return render_template('staff.html')
+
+@app.route('/staff/movie', methods=['GET'])
+def staff_page_movie():
+    conn = pool.get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT movie_id, movie_title, movie_release, movie_grade FROM movie")
+    movies = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('staff_edit.html', movies=movies)
+
+@app.route('/staff/member')
+def staff_page_member():
+    return render_template('staff_edit.html')
+@app.route('/staff/search')
+def staff_page_search():
+    return render_template('staff_edit.html')
 
 if __name__ == '__main__':
     try:
