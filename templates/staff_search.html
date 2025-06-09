@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM Video</title>
+    <link rel="stylesheet" type="text/css" href="/static/staff.css">
+</head>
+<body>
+    <nav>
+        <a href="/">SEM Video</a>
+        <a href="/staff" class="staff">★</a>
+    </nav>
+    <main>
+       <form action="/staff/search/filter" method="get">
+            <input type="text" name="find" placeholder="關鍵字..." autocomplete="off">
+            <label>查詢類別：</label>
+            <select name="target">
+                <option value="movie">電影</option>
+                <option value="member">會員</option>
+                <option value="genre">類型</option>
+                <option value="month">月份</option>
+            </select>
+
+            <label>條件：</label>
+            <select name="condition">
+                <option value="downloads">下載次數</option>
+                <option value="revenue">付款金額/銷售最佳</option>
+            </select>
+
+            <label>排序：</label>
+            <select name="order">
+                <option value="desc">最多 ➤ 最少</option>
+                <option value="asc">最少 ➤ 最多</option>
+            </select>
+
+            <label>篩選數量：</label>
+            <input type="number" name="limit" value="10" min="1" max="30">
+
+            <button type="submit">查詢</button>
+        </form>
+        {% if result %}
+            <h2>查詢結果</h2>
+            <table border="1">
+            <thead>
+                <tr><th>名稱</th><th>數值</th></tr>
+            </thead>
+            <tbody>
+                {% for row in result %}
+                <tr>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        {% endif %}
+    </main>
+</body>
+</html>

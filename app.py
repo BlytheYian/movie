@@ -95,7 +95,7 @@ def movie_detail(movie_id):
 def staff_page():
     return render_template('staff.html')
 
-@app.route('/staff/movie', methods=['GET'])
+@app.route('/staff/movie', methods=['GET']) # 不過預設就是GET所以加不加都沒差
 def staff_page_movie():
     conn = pool.get_connection()
     cursor = conn.cursor(dictionary=True)
@@ -233,7 +233,109 @@ def view_transactions(member_id):
 
 @app.route('/staff/search')
 def staff_page_search():
-    return render_template('staff_edit.html')
+    return render_template('staff_search.html')
+
+@app.route('/staff/search/filter')
+def dynamic_search():
+    keyword = request.args.get('find')
+    target = request.args.get('target')
+    condition = request.args.get('condition')
+    order = request.args.get('order', 'desc')
+    limit = int(request.args.get('limit', 10))
+
+    conn = pool.get_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    # 動態 SQL 組合邏輯
+    if target == 'movie':
+        if condition == 'downloads':
+            query = f"""
+                SELECT m.movie_title AS name, COUNT(*) AS value
+                FROM download_library d
+                JOIN movie m ON d.movie_id = m.movie_id
+                where m.movie_title like %s
+                GROUP BY d.movie_id
+                ORDER BY value {order} LIMIT %s
+            """
+        elif condition == 'revenue':
+            query = f"""
+                SELECT m.movie_title AS name, SUM(p.payment_amount) AS value
+                FROM payment p
+                JOIN movie m ON p.movie_id = m.movie_id
+                where m.movie_title like %s
+                GROUP BY p.movie_id
+                ORDER BY value {order} LIMIT %s
+            """
+
+    elif target == 'member':
+        if condition == 'downloads':
+            query = f"""
+                SELECT mem.member_name AS name, COUNT(*) AS value
+                FROM payment p
+                JOIN member mem ON p.member_id = mem.member_id
+                where mem.member_name like %s
+                GROUP BY p.member_id
+                ORDER BY value {order} LIMIT %s
+            """
+        elif condition == 'revenue':
+            query = f"""
+                SELECT mem.member_name AS name, SUM(p.payment_amount) AS value
+                FROM payment p
+                JOIN member mem ON p.member_id = mem.member_id
+                where mem.member_name like %s
+                GROUP BY p.member_id
+                ORDER BY value {order} LIMIT %s
+            """
+
+    elif target == 'genre':
+        if condition == 'downloads':
+             query = f"""
+                SELECT m.movie_genre AS name, COUNT(*) AS value
+                FROM payment p
+                JOIN movie m ON p.movie_id = m.movie_id
+                where m.movie_genre like %s
+                GROUP BY m.movie_genre
+                ORDER BY value {order} LIMIT %s
+            """
+        elif condition == 'revenue':
+            query = f"""
+                SELECT m.movie_genre AS name, SUM(p.payment_amount) AS value
+                FROM payment p
+                JOIN movie m ON p.movie_id = m.movie_id
+                where m.movie_genre like %s
+                GROUP BY m.movie_genre
+                ORDER BY value {order} LIMIT %s
+            """
+
+    elif target == 'month':
+        if condition == 'downloads':
+            query = f"""
+                SELECT DATE_FORMAT(p.payment_date, '%Y-%m') AS name, COUNT(*) AS value
+                FROM payment p
+                GROUP BY name
+                ORDER BY value {order} LIMIT %s
+            """
+        elif condition == 'revenue':
+            query = f"""
+                SELECT DATE_FORMAT(p.payment_date, '%Y-%m') AS name, SUM(p.payment_amount) AS value
+                FROM payment p
+                GROUP BY name
+                ORDER BY value {order} LIMIT %s
+            """
+
+    else:
+        query = "SELECT '無效查詢' AS name, 0 AS value"
+    
+    if target != 'month':
+        like_pattern = f"%{keyword}%"
+        cursor.execute(query, (like_pattern, limit,))
+    else:
+        cursor.execute(query, (limit,))
+    result = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    
+    return render_template('staff_search.html', result=result)
 
 if __name__ == '__main__':
     try:
