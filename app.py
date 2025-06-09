@@ -240,8 +240,17 @@ def dynamic_search():
     genre = request.args.get('genre')
     target = request.args.get('target')
     condition = request.args.get('condition')
-    order = request.args.get('order', 'desc')
+    order = request.args.get('order', 'desc') # 如果沒有傳入 order 參數，則預設用 "desc"
+    front_year = request.args.get('front_year')
+    last_year = request.args.get('last_year')
     limit = int(request.args.get('limit', 10))
+    
+    if not genre:
+        genre="%"
+    if not front_year:
+        front_year="1900/01"
+    if not last_year:
+        last_year="2100/01"
 
     conn = pool.get_connection()
     cursor = conn.cursor(dictionary=True)
@@ -253,7 +262,9 @@ def dynamic_search():
                 SELECT m.movie_title AS name, COUNT(*) AS value
                 FROM download_library d
                 JOIN movie m ON d.movie_id = m.movie_id
-                where m.movie_genre=%s
+                where m.movie_genre like %s
+                and YEAR(d.download_date) >= {front_year}
+                and YEAR(d.download_date) <= {last_year}
                 GROUP BY d.movie_id
                 ORDER BY value {order} LIMIT %s
             """
@@ -262,7 +273,9 @@ def dynamic_search():
                 SELECT m.movie_title AS name, SUM(p.payment_amount) AS value
                 FROM payment p
                 JOIN movie m ON p.movie_id = m.movie_id
-                where m.movie_genre=%s
+                where m.movie_genre like %s
+                and YEAR(p.payment_date) >= {front_year}
+                and YEAR(p.payment_date) <= {last_year}
                 GROUP BY p.movie_id
                 ORDER BY value {order} LIMIT %s
             """
@@ -275,6 +288,8 @@ def dynamic_search():
                 JOIN member mem ON d.member_id = mem.member_id
                 JOIN movie m ON d.movie_id = m.movie_id
                 where m.movie_genre like %s
+                and YEAR(d.download_date) >= {front_year}
+                and YEAR(d.download_date) <= {last_year}
                 GROUP BY d.member_id
                 ORDER BY value {order} LIMIT %s
             """
@@ -285,6 +300,8 @@ def dynamic_search():
                 JOIN member mem ON p.member_id = mem.member_id
                 JOIN movie m ON p.movie_id = m.movie_id
                 where m.movie_genre like %s
+                and YEAR(p.payment_date) >= {front_year}
+                and YEAR(p.payment_date) <= {last_year}
                 GROUP BY p.member_id
                 ORDER BY value {order} LIMIT %s
             """
@@ -296,6 +313,8 @@ def dynamic_search():
                 FROM download_library d
                 JOIN movie m ON d.movie_id = m.movie_id
                 where m.movie_genre like %s
+                and YEAR(d.download_date) >= {front_year}
+                and YEAR(d.download_date) <= {last_year}
                 GROUP BY m.movie_genre
                 ORDER BY value {order} LIMIT %s
             """
@@ -305,6 +324,8 @@ def dynamic_search():
                 FROM payment p
                 JOIN movie m ON p.movie_id = m.movie_id
                 where m.movie_genre like %s
+                and YEAR(p.payment_date) >= {front_year}
+                and YEAR(p.payment_date) <= {last_year}
                 GROUP BY m.movie_genre
                 ORDER BY value {order} LIMIT %s
             """
@@ -316,6 +337,8 @@ def dynamic_search():
                 FROM download_library d
                 JOIN movie m ON d.movie_id = m.movie_id
                 where m.movie_genre like %s
+                and YEAR(d.download_date) >= {front_year}
+                and YEAR(d.download_date) <= {last_year}
                 GROUP BY name
                 ORDER BY value {order} LIMIT %s
             """
@@ -325,15 +348,14 @@ def dynamic_search():
                 FROM payment p
                 JOIN movie m ON p.movie_id = m.movie_id
                 where m.movie_genre like %s
+                and YEAR(p.payment_date) >= {front_year}
+                and YEAR(p.payment_date) <= {last_year}
                 GROUP BY name
                 ORDER BY value {order} LIMIT %s
             """
 
     else:
         query = "SELECT '無效查詢' AS name, 0 AS value"
-    
-    if not genre:
-        genre="%"
 
     cursor.execute(query, (genre, limit,))
     result = cursor.fetchall()
