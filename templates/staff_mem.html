@@ -44,7 +44,7 @@
                     <td><input name="member_name" placeholder="用戶名稱" value="{{ member.member_name }}" autocomplete="off"></td>
                     <td><input name="email" placeholder="email" value="{{ member.member_email }}" autocomplete="off"></td>
                     <td><input name="character" placeholder="身分" value="{{ member.member_character }}" autocomplete="off"></td>
-                    <td><p name="status" placeholder="???">{{ member.member_status }}</p></td>
+                    <td><p name="status" class="{{ 'active' if member.member_status == 'active' else 'inactive' if member.member_status == 'inactive' else 'suspended' }}" placeholder="???">{{ member.member_status }}</p></td>
                     <td>
                         <button type="submit">更新</button>
                 </form>

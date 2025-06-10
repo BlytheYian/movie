@@ -41,3 +41,12 @@ main {
     min-height: calc(100%);;
     background-color: #D9D9D9;
 }
+
+/*status*/
+.active {
+    color: rgb(1, 168, 1);
+}.inactive {
+    color: red;
+}.suspended {
+    color: blue;
+}
