@@ -45,7 +45,10 @@
             </div>
         </div>
         <div class="critics">
-            <h2>Critics Review</h2>
+            <div class="cri">
+                <h2>Critics Review</h2>
+                <h3>★{{ movie.movie_rate }}</h3>
+            </div>
             <div class="critics_review">
                 {% if critics %}
                 {% for critic in critics  %}

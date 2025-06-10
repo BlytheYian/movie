@@ -227,6 +227,9 @@ main {
     position: relative
 }.critics h2{
     margin-left: 1.5vh;
+}.critics h3{
+    margin-left: 5vh;
+    color: gray;
 }
 .critics_review {
     margin: 1vh 0px;
@@ -241,6 +244,10 @@ main {
 }.critics_review::-webkit-scrollbar-thumb {
     background: #808b91;
     border-radius: 1vh;
+}.cri {
+    padding: 1vh;
+    display: flex;
+    flex-direction: row;
 }
 .else {
     left:3vh;
